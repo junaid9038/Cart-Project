@@ -1,59 +1,12 @@
 import React, { Component } from "react";
-class CartItem extends React.Component{
-  
-    // // testing() { not need lomger
+const CartItem =(props)=>{
 
-    // //     const promise = new promise((resolve,rejact) =>{
-    // //         setTimeout(() =>{
-    // //             resolve('done');
-    // //         },5000);
-    // //     });
-
-    // //     promise.then(() =>{
-    // //         this.setState({qty:this.state.qty +10});
-    // //     });
-
-    // // }
-
-    // increaseQuentity = () =>{ // arow function autometicaly bind the inheritance class
-    //     // this.state.qty += 1;
-    //     // console.log('this',this.state);
-    //     // form 1
-    //     // this.setState({ // rerender the value with updatated value 
-    //     //     qty : this.state.qty + 1// add quentity 
-    //     // });
-
-       
-    //     this.setState((prevState) => {  // form 2 - if prevState is require then do this one 
-    //         return{
-    //             qty :this.state.qty +1
-
-    //         }
-    //     })
-    // }
-
-    // decreaseQuestity = () =>{
-    //     const {qty} = this.state;
-
-    //     if(qty === 0){
-    //         return;
-    //     }
-
-
-    //     this.setState((prevState) => {
-    //         return{
-    //             qty : this.state.qty -1
-    //         }
-    //     })
-    // }
-    render(){
-        console.log('this.props',this.props);
-         const {price,title,qty} = this.props.product; //boject distructing 
-         const {product,onIncreaseQuentity,onDecreaseQuentity,onDeleteproduct} = this.props;
+         const {price,title,qty} = props.product; //boject distructing 
+         const {product,onIncreaseQuentity,onDecreaseQuentity,onDeleteproduct} = props;
         return(
             <div className="cart-item">
             <div className="left-block">
-                <img style={styles.image}/>
+                <img style={styles.image} src={product.img}/>
             </div>
             <div className="right-block">
                 <div style={{fontSize:25}}>{title}</div>
@@ -81,8 +34,8 @@ class CartItem extends React.Component{
                 </div>
             </div>
          </div>
-        );
-    }
+        );       
+
 }
 
 const styles = {
