@@ -1,55 +1,55 @@
 import React, { Component } from "react";
 class CartItem extends React.Component{
   
-    // testing() {
+    // // testing() { not need lomger
 
-    //     const promise = new promise((resolve,rejact) =>{
-    //         setTimeout(() =>{
-    //             resolve('done');
-    //         },5000);
-    //     });
+    // //     const promise = new promise((resolve,rejact) =>{
+    // //         setTimeout(() =>{
+    // //             resolve('done');
+    // //         },5000);
+    // //     });
 
-    //     promise.then(() =>{
-    //         this.setState({qty:this.state.qty +10});
-    //     });
+    // //     promise.then(() =>{
+    // //         this.setState({qty:this.state.qty +10});
+    // //     });
 
-    // }
+    // // }
 
-    increaseQuentity = () =>{ // arow function autometicaly bind the inheritance class
-        // this.state.qty += 1;
-        // console.log('this',this.state);
-        // form 1
-        // this.setState({ // rerender the value with updatated value 
-        //     qty : this.state.qty + 1// add quentity 
-        // });
+    // increaseQuentity = () =>{ // arow function autometicaly bind the inheritance class
+    //     // this.state.qty += 1;
+    //     // console.log('this',this.state);
+    //     // form 1
+    //     // this.setState({ // rerender the value with updatated value 
+    //     //     qty : this.state.qty + 1// add quentity 
+    //     // });
 
        
-        this.setState((prevState) => {  // form 2 - if prevState is require then do this one 
-            return{
-                qty :this.state.qty +1
+    //     this.setState((prevState) => {  // form 2 - if prevState is require then do this one 
+    //         return{
+    //             qty :this.state.qty +1
 
-            }
-        })
-    }
+    //         }
+    //     })
+    // }
 
-    decreaseQuestity = () =>{
-        const {qty} = this.state;
+    // decreaseQuestity = () =>{
+    //     const {qty} = this.state;
 
-        if(qty === 0){
-            return;
-        }
+    //     if(qty === 0){
+    //         return;
+    //     }
 
 
-        this.setState((prevState) => {
-            return{
-                qty : this.state.qty -1
-            }
-        })
-    }
+    //     this.setState((prevState) => {
+    //         return{
+    //             qty : this.state.qty -1
+    //         }
+    //     })
+    // }
     render(){
         console.log('this.props',this.props);
          const {price,title,qty} = this.props.product; //boject distructing 
-      
+         const {product,onIncreaseQuentity,onDecreaseQuentity,onDeleteproduct} = this.props;
         return(
             <div className="cart-item">
             <div className="left-block">
@@ -64,18 +64,19 @@ class CartItem extends React.Component{
                      alt="increase"
                       className="action-icon"
                        src="https://cdn-icons-png.flaticon.com/128/992/992651.png"
-                       onClick={this.increaseQuentity}
+                       onClick={() => onIncreaseQuentity(product)}
                     />
                     <img
                      alt="decrease"
                       className="action-icon" 
                       src="https://cdn-icons-png.flaticon.com/128/9632/9632763.png"
-                      onClick={this.decreaseQuestity}
+                      onClick={() => onDecreaseQuentity(product)}
                     />
                     <img
                      alt="delete"
                       className="action-icon"
                        src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png"
+                       onClick={()=> onDeleteproduct(product.id)}
                      />
                 </div>
             </div>
